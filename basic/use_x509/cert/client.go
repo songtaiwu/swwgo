@@ -103,6 +103,8 @@ func GenClientCsr(cn string, keyBits int) ([]byte, []byte, error) {
 		Subject: pkix.Name{
 			CommonName:  cn,
 		},
+		SignatureAlgorithm: x509.SHA256WithRSA,
+		PublicKey: x509.RSA,
 	}
 	// 生成csr，der编码格式
 	request, err := x509.CreateCertificateRequest(rand.Reader, template, privateKey)
@@ -148,13 +150,27 @@ func SignCsr(csrPath string, caCertPath, caKeyPath string) ([]byte, error) {
 	}
 
 	// 读取csr文件，转为*x509.Certificate
-	csrCert, err := GetCertFromPemFile(csrPath)
+	csr, err := GetCsrFromPemFile(csrPath)
 	if err != nil {
 		return nil, err
 	}
 
-
-	certificate, err := x509.CreateCertificate(rand.Reader, csrCert, caCert, csrCert.PublicKey, caPrivateKey)
+	template := x509.Certificate{
+		SerialNumber: big.NewInt(1),
+		SubjectKeyId: []byte{1, 2, 3, 4, 6},
+		//证书的开始时间
+		NotBefore: time.Now(),
+		//证书的结束时间
+		NotAfter: time.Now().Add(time.Hour * 24 * 365),
+		//证书用途
+		ExtKeyUsage:  []x509.ExtKeyUsage{x509.ExtKeyUsageClientAuth, x509.ExtKeyUsageServerAuth},
+		KeyUsage: x509.KeyUsageDigitalSignature,
+		//基本的有效性约束
+		BasicConstraintsValid: true,
+		//是否是根证书
+		IsCA: true,
+	}
+	certificate, err := x509.CreateCertificate(rand.Reader, &template, caCert, csr.PublicKey, caPrivateKey)
 	if err != nil {
 		return nil, err
 	}

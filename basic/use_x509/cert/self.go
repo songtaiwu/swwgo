@@ -30,6 +30,8 @@ func GenSelfSignedCA() ([]byte, []byte, error){
 		Subject: pkix.Name{
 			CommonName: "sww Root CA",
 		},
+		SignatureAlgorithm: x509.SHA256WithRSA,
+		PublicKey: x509.RSA,
 		//证书的开始时间
 		NotBefore: time.Now(),
 		//证书的结束时间
