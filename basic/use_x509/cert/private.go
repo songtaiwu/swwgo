@@ -1,4 +1,4 @@
-package main
+package cert
 
 import (
 	"crypto/rand"
@@ -7,7 +7,7 @@ import (
 	"encoding/pem"
 )
 
-// 生成加密的私钥
+// PrivateKeyToEncryptedPEM 生成加密的私钥
 // 1. 生成私钥
 // 2. 将其转换为PEM格式
 // 3. 加密PEM
