@@ -1,12 +1,7 @@
 package main
 
-import (
-
-	"fmt"
-)
+import "swwgo/basic/use_x509/private"
 
 func main() {
-	fmt.Print(123123)
-
-	//key, err := rsa.GenerateKey(rand.Reader, 2048)
+	_ = private.GenRSAPriToFile("key.pem", "", 2048)
 }
