@@ -12,6 +12,10 @@ import (
 var db *xorm.Engine
 var err error
 
+func GetDB() *xorm.Engine {
+	return db
+}
+
 func Init() {
 	dbname := conf.PostgresDBSetting.DbName
 	user := conf.PostgresDBSetting.User

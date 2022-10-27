@@ -47,7 +47,7 @@ func getLoggerLevel(lvl string) zapcore.Level {
 
 func Init()  {
 	// 从conf中读取配置
-	filePath := defaultStr(conf.LogSetting.FilePath, "./logs")
+	filePath := defaultStr(conf.LogSetting.FilePath, "/Users/taiwu/")
 	maxSize := defaultInt(conf.LogSetting.MaxSize, 128)
 	maxBackups := defaultInt(conf.LogSetting.MaxBackups, 100)
 	maxAge := defaultInt(conf.LogSetting.MaxAge, 30)
@@ -63,7 +63,7 @@ func Init()  {
 			filePath = filePath + "/" + fileName
 		}
 	}
-
+println(filePath, "------")
 	// 日志等级
 	logLevel := getLoggerLevel(level)
 

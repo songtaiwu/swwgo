@@ -37,7 +37,6 @@ func EnvInit() {
 
 	conf.ServiceSetting = &conf.Service{
 		HttpPort: EnvInt(envHttpPort, defHttpPort),
-		LogPath:  Env(envLogPath, defLogPath),
 	}
 }
 

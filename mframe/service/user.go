@@ -8,7 +8,7 @@ import (
 )
 
 var UserServices = UserService{
-	UserDao: new(impl.UserDaoImpl),
+	UserDao: impl.UserDaoImpls,
 }
 
 type UserService struct {
