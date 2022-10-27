@@ -4,13 +4,25 @@ import (
 	"swwgo/mframe/dao"
 	"swwgo/mframe/dao/impl"
 	"swwgo/mframe/models"
+	"time"
 )
+
+var UserServices = UserService{
+	UserDao: new(impl.UserDaoImpl),
+}
 
 type UserService struct {
 	UserDao dao.UserDao
 }
 
-func (u *UserService)AddUser(name string) (user *models.User) {
-	u.UserDao.Save(name)
-	return
+func (u *UserService)AddUser(name string) (*models.User, error) {
+	user := &models.User{
+		Name:    name,
+		Created: time.Now().Unix(),
+	}
+	err := u.UserDao.Save(user)
+	if err != nil {
+		return user, nil
+	}
+	return nil, err
 }
