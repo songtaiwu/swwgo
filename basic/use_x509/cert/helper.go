@@ -31,7 +31,7 @@ func FileToPemBytes(filePath string) ([]byte, error) {
 // --------------------------------------------------
 
 // GetCsrFromPemFile
-// 从cse的pem编码的文件中读取，转为*x509.CertificateRequest
+// 从csr的pem编码的文件中读取，转为*x509.CertificateRequest
 func GetCsrFromPemFile(path string) (*x509.CertificateRequest, error) {
 	file, err := ioutil.ReadFile(path)
 	if err != nil {

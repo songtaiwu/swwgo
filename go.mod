@@ -3,6 +3,7 @@ module swwgo
 go 1.15
 
 require (
+	github.com/BurntSushi/toml v0.3.1 // indirect
 	github.com/Chronokeeper/anyxml v0.0.0-20160530174208-54457d8e98c6 // indirect
 	github.com/CloudyKit/fastprinter v0.0.0-20200109182630-33d98a066a53 // indirect
 	github.com/CloudyKit/jet v2.1.2+incompatible // indirect

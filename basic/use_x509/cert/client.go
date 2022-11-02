@@ -101,6 +101,8 @@ func GenClientCsr(cn string, keyBits int) ([]byte, []byte, error) {
 
 	template := &x509.CertificateRequest{
 		Subject: pkix.Name{
+			//Organization: []string{"xxx"},
+			//OrganizationalUnit: []string{"xxx"},
 			CommonName:  cn,
 		},
 		SignatureAlgorithm: x509.SHA256WithRSA,
