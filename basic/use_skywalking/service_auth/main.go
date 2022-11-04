@@ -4,14 +4,13 @@ import (
 	"github.com/SkyAPM/go2sky"
 	"github.com/SkyAPM/go2sky/reporter"
 	"github.com/gin-gonic/gin"
-	"log"
 	"time"
 
 	v3 "github.com/SkyAPM/go2sky-plugins/gin/v3"
 )
 
 const (
-	serverName = "service-222"
+	serverName = "auth"
 	skyAddr = "192.168.71.131:11800"
 )
 
@@ -37,14 +36,6 @@ func main() {
 	startSkyWalking()
 
 	r := gin.Default()
-
-	// skyAddr 是 skywaling 的 grpc 地址，默认是 localhost:11800， 默认心跳检测时间是 1s
-	rp, err := reporter.NewGRPCReporter(skyAddr, reporter.WithCheckInterval(5*time.Second))
-	log.Println(err)
-
-	// 初始化一个tracer， 一个服务只需要一个tracer，其含义是这个服务名称
-	tracer, err := go2sky.NewTracer(serverName, go2sky.WithReporter(rp))
-	log.Println(err)
 
 	// gin 使用 sky 自带的 middleware
 	r.Use(v3.Middleware(r, tracer))
