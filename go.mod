@@ -16,15 +16,17 @@ require (
 	github.com/fatih/structs v1.1.0 // indirect
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
 	github.com/gin-gonic/gin v1.8.1
+	github.com/go-kit/kit v0.12.0
 	github.com/go-sql-driver/mysql v1.6.0 // indirect
-	github.com/lib/pq v1.10.7
+	github.com/goccy/go-json v0.9.7
+	github.com/lib/pq v1.10.7 // indirect
 	github.com/mattn/go-sqlite3 v1.14.16 // indirect
-	github.com/subosito/gotenv v1.4.1
+	github.com/subosito/gotenv v1.4.1 // indirect
 	github.com/syndtr/goleveldb v1.0.0 // indirect
 	github.com/tealeg/xlsx v1.0.5 // indirect
 	github.com/xormplus/builder v0.0.0-20200331055651-240ff40009be // indirect
-	github.com/xormplus/xorm v0.0.0-20210822100304-4e1d4fcc1e67
-	go.uber.org/zap v1.23.0
+	github.com/xormplus/xorm v0.0.0-20210822100304-4e1d4fcc1e67 // indirect
+	go.uber.org/zap v1.23.0 // indirect
 	gopkg.in/flosch/pongo2.v3 v3.0.0-20141028000813-5e81b817a0c4 // indirect
-	gopkg.in/natefinch/lumberjack.v2 v2.0.0
+	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 )
