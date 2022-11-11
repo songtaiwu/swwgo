@@ -23,13 +23,13 @@ func startSkyWalking() {
 	var rp go2sky.Reporter
 	var err error
 	// skyAddr 是 skywaling 的 grpc 地址，默认是 localhost:11800， 默认心跳检测时间是 1s
-	rp, err = reporter.NewGRPCReporter(skyAddr, reporter.WithCheckInterval(5*time.Second))
+	rp, err = reporter.NewGRPCReporter(conf.SkyAddr, reporter.WithCheckInterval(5*time.Second))
 	if err != nil {
 		panic(err)
 	}
 
 	// 初始化一个tracer， 一个服务只需要一个tracer，其含义是这个服务名称
-	tracer, err = go2sky.NewTracer(serverName, go2sky.WithReporter(rp))
+	tracer, err = go2sky.NewTracer(conf.ServiceOrder, go2sky.WithReporter(rp))
 	if err != nil {
 		panic(err)
 	}
