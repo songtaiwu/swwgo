@@ -24,4 +24,3 @@ func MakeEndPointArticleAdd(svc my_service.IService) endpoint.Endpoint {
 		return res, nil
 	}
 }
-

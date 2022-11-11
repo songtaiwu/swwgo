@@ -18,7 +18,7 @@ import (
 //	1、证书PEM编码，
 //  2、私钥PEM编码
 //	3、error
-func GenSelfSignedCA() ([]byte, []byte, error){
+func GenSelfSignedCA() ([]byte, []byte, error) {
 	// 创建私钥
 	privateKey, err := rsa.GenerateKey(rand.Reader, 2048)
 	if err != nil {
@@ -31,13 +31,13 @@ func GenSelfSignedCA() ([]byte, []byte, error){
 			CommonName: "sww Root CA",
 		},
 		SignatureAlgorithm: x509.SHA256WithRSA,
-		PublicKey: x509.RSA,
+		PublicKey:          x509.RSA,
 		//证书的开始时间
 		NotBefore: time.Now(),
 		//证书的结束时间
 		NotAfter: time.Now().Add(time.Hour * 24 * 365),
 		//证书用途
-		KeyUsage: x509.KeyUsageKeyEncipherment | x509.KeyUsageDigitalSignature | x509.KeyUsageCertSign,
+		KeyUsage:    x509.KeyUsageKeyEncipherment | x509.KeyUsageDigitalSignature | x509.KeyUsageCertSign,
 		ExtKeyUsage: []x509.ExtKeyUsage{x509.ExtKeyUsageServerAuth},
 		//基本的有效性约束
 		BasicConstraintsValid: true,

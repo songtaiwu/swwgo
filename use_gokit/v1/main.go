@@ -7,7 +7,6 @@ import (
 	"swwgo/use_gokit/v1/app/my_endpoint"
 	"swwgo/use_gokit/v1/app/my_service"
 	"swwgo/use_gokit/v1/app/my_tansport"
-	"time"
 )
 
 func main() {
@@ -32,5 +31,7 @@ func main() {
 	if err != nil {
 		println(err.Error())
 	}
-	time.Sleep(time.Second * 100)
+	select {
+
+	}
 }

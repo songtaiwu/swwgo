@@ -18,7 +18,7 @@ require (
 	github.com/gin-gonic/gin v1.8.1
 	github.com/go-kit/kit v0.12.0
 	github.com/go-sql-driver/mysql v1.6.0 // indirect
-	github.com/goccy/go-json v0.9.7
+	github.com/goccy/go-json v0.9.7 // indirect
 	github.com/lib/pq v1.10.7 // indirect
 	github.com/mattn/go-sqlite3 v1.14.16 // indirect
 	github.com/subosito/gotenv v1.4.1 // indirect

@@ -23,5 +23,5 @@ func OrderPay(c *gin.Context, username string, orderId string) string {
 
 	ret := "1998111111111"
 	span.Tag("return", ret)
-	return  ret
+	return ret
 }

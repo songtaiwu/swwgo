@@ -13,10 +13,6 @@ import (
 	v3 "github.com/SkyAPM/go2sky-plugins/gin/v3"
 )
 
-const (
-
-)
-
 var tracer *go2sky.Tracer
 
 func startSkyWalking() {
@@ -42,11 +38,11 @@ func DealErr(err error) {
 }
 
 func CalcAuth(c *gin.Context, userToken string) {
-	req, err := http.NewRequest(http.MethodGet, conf.ServiceAuthUrl + "?token=" + userToken, nil)
+	req, err := http.NewRequest(http.MethodGet, conf.ServiceAuthUrl+"?token="+userToken, nil)
 	DealErr(err)
 
 	// 创建span
-	resSpan, err := tracer.CreateExitSpan(c.Request.Context(), "invoke -"+ conf.ServiceAuth, "xxxxx", func(headerKey, headerValue string) error {
+	resSpan, err := tracer.CreateExitSpan(c.Request.Context(), "invoke -"+conf.ServiceAuth, "xxxxx", func(headerKey, headerValue string) error {
 		req.Header.Set(headerKey, headerValue)
 		return nil
 	})
@@ -79,10 +75,10 @@ func main() {
 		CalcAuth(c, "sww的xxxxToken")
 
 		println("order_pay 订单处理...")
-		OrderPay(c,"songweiwei", "199112312912931")
+		OrderPay(c, "songweiwei", "199112312912931")
 
 		c.JSON(200, gin.H{
-			"message" : "ping",
+			"message": "ping",
 		})
 	})
 

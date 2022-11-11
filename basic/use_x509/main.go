@@ -15,7 +15,6 @@ func main() {
 	//cert.PemBytesToFile("ca.crt", public)
 	//cert.PemBytesToFile("ca.key", private)
 
-
 	// ------- 证书的加密和解密
 	str := "hello world"
 	encrypt, err := cert.PublicPemEncrypt([]byte(str), "ca.crt")
@@ -28,7 +27,6 @@ func main() {
 	}
 	fmt.Println(string(decrypt))
 
-
 	// ------- ca签客户端证书
 	//pemPublic, pemBytes, err := cert.GenSignedClientPem("client123", "ca.crt", "ca.key")
 	//if err != nil {
@@ -36,7 +34,7 @@ func main() {
 	//}
 	//cert.PemBytesToFile("client.crt", pemPublic)
 	//cert.PemBytesToFile("client.key", pemBytes)
-	
+
 	// ------- 创建客户端证书csr 并签发
 	//clientKey, clientCsr, err := cert.GenClientCsr("client999", 2048)
 	//if err != nil {

@@ -38,7 +38,7 @@ func main() {
 
 	r.GET("/auth", func(c *gin.Context) {
 		c.JSON(200, gin.H{
-			"message" : "ping",
+			"message": "ping",
 		})
 	})
 

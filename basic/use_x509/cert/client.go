@@ -15,7 +15,7 @@ import (
 创建自签ca证书， 核心就是调用x509.CreateCertificate()方法，template和parent参数一样，则代表是自签的。
 
 创建一个证书csr，核心是调用 x509.CreateCertificateRequest(), 只要提前创建好私钥。
- */
+*/
 
 // GenSignedClientPem
 // 创建终端证书, 指定ca证书和私钥路径，证书直接被ca签名
@@ -23,7 +23,7 @@ import (
 //	1、证书PEM编码，
 //  2、私钥PEM编码
 //	3、error
-func GenSignedClientPem(cn string, caCertPath, caKeyPath string) ([]byte, []byte, error){
+func GenSignedClientPem(cn string, caCertPath, caKeyPath string) ([]byte, []byte, error) {
 	// 读取ca证书私钥
 	caPrivateKey, err := GetPrivateKeyFromPemFile(caKeyPath)
 	if err != nil {
@@ -52,8 +52,8 @@ func GenSignedClientPem(cn string, caCertPath, caKeyPath string) ([]byte, []byte
 		//证书的结束时间
 		NotAfter: time.Now().Add(time.Hour * 24 * 365),
 		//证书用途
-		ExtKeyUsage:  []x509.ExtKeyUsage{x509.ExtKeyUsageClientAuth, x509.ExtKeyUsageServerAuth},
-		KeyUsage: x509.KeyUsageDigitalSignature,
+		ExtKeyUsage: []x509.ExtKeyUsage{x509.ExtKeyUsageClientAuth, x509.ExtKeyUsageServerAuth},
+		KeyUsage:    x509.KeyUsageDigitalSignature,
 		//基本的有效性约束
 		BasicConstraintsValid: true,
 		//是否是根证书
@@ -103,10 +103,10 @@ func GenClientCsr(cn string, keyBits int) ([]byte, []byte, error) {
 		Subject: pkix.Name{
 			//Organization: []string{"xxx"},
 			//OrganizationalUnit: []string{"xxx"},
-			CommonName:  cn,
+			CommonName: cn,
 		},
 		SignatureAlgorithm: x509.SHA256WithRSA,
-		PublicKey: x509.RSA,
+		PublicKey:          x509.RSA,
 	}
 	// 生成csr，der编码格式
 	request, err := x509.CreateCertificateRequest(rand.Reader, template, privateKey)
@@ -144,7 +144,7 @@ func SignCsr(csrPath string, caCertPath, caKeyPath string) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// 读取ca的私钥
 	caPrivateKey, err := GetPrivateKeyFromPemFile(caKeyPath)
 	if err != nil {
@@ -165,8 +165,8 @@ func SignCsr(csrPath string, caCertPath, caKeyPath string) ([]byte, error) {
 		//证书的结束时间
 		NotAfter: time.Now().Add(time.Hour * 24 * 365),
 		//证书用途
-		ExtKeyUsage:  []x509.ExtKeyUsage{x509.ExtKeyUsageClientAuth, x509.ExtKeyUsageServerAuth},
-		KeyUsage: x509.KeyUsageDigitalSignature,
+		ExtKeyUsage: []x509.ExtKeyUsage{x509.ExtKeyUsageClientAuth, x509.ExtKeyUsageServerAuth},
+		KeyUsage:    x509.KeyUsageDigitalSignature,
 		//基本的有效性约束
 		BasicConstraintsValid: true,
 		//是否是根证书

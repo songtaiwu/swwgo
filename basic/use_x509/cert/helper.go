@@ -50,7 +50,6 @@ func GetCsrFromPemFile(path string) (*x509.CertificateRequest, error) {
 	return request, nil
 }
 
-
 // GetCertFromPemFile
 // 从pem证书文件读取，转为*x509.Certificate
 func GetCertFromPemFile(path string) (*x509.Certificate, error) {

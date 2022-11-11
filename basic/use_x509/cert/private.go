@@ -21,7 +21,7 @@ func PrivateKeyToEncryptedPEM(bits int, pwd string) ([]byte, error) {
 	// 转为pem格式
 	// Bytes属性对应的是DER编码内容
 	block := &pem.Block{
-		Type: "RSA PRIVATE KEY",
+		Type:  "RSA PRIVATE KEY",
 		Bytes: x509.MarshalPKCS1PrivateKey(key),
 	}
 

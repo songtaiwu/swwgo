@@ -22,7 +22,7 @@ func GenPriToEncryptedPEM(bits int, pwd string) ([]byte, error) {
 	// 私钥转为pem格式（使用Base64 ASCII进行编码的纯文本格式）
 	// Bytes属性对应的是DER编码内容
 	block := &pem.Block{
-		Type: "RSA PRIVATE KEY",
+		Type:  "RSA PRIVATE KEY",
 		Bytes: x509.MarshalPKCS1PrivateKey(key),
 	}
 
