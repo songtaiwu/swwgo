@@ -3,7 +3,7 @@ package my_endpoint
 import (
 	"context"
 	"github.com/go-kit/kit/endpoint"
-	"swwgo/basic/use_gokit/app/my_service"
+	"swwgo/use_gokit/v1/app/my_service"
 )
 
 // MakeEndPointArticleAdd 创建关于业务的构造函数

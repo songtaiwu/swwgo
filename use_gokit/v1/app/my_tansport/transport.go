@@ -5,7 +5,7 @@ import (
 	"errors"
 	"github.com/goccy/go-json"
 	"net/http"
-	"swwgo/basic/use_gokit/app/my_service"
+	"swwgo/use_gokit/v1/app/my_service"
 )
 
 // Transport 负责HTTP、gRPC、thrift等相关协议的请求逻辑

@@ -4,9 +4,10 @@ import (
 	"fmt"
 	httpTransport "github.com/go-kit/kit/transport/http"
 	"net/http"
-	"swwgo/basic/use_gokit/app/my_endpoint"
-	"swwgo/basic/use_gokit/app/my_service"
-	"swwgo/basic/use_gokit/app/my_tansport"
+	"swwgo/use_gokit/v1/app/my_endpoint"
+	"swwgo/use_gokit/v1/app/my_service"
+	"swwgo/use_gokit/v1/app/my_tansport"
+	"time"
 )
 
 func main() {
@@ -27,7 +28,9 @@ func main() {
 	m := http.NewServeMux()
 	m.Handle("/article", handler)
 	fmt.Println("server run 0.0.0.0:8888")
-	http.ListenAndServe(":8888", m)
-
-	select {}
+	err := http.ListenAndServe("0.0.0.0:8888", m)
+	if err != nil {
+		println(err.Error())
+	}
+	time.Sleep(time.Second * 100)
 }
