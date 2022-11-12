@@ -1,0 +1,23 @@
+
+//proto3标准
+syntax = "proto3";
+
+option go_package = "./proto";
+
+package Article;
+
+// 定义rpc接口
+service Article {
+  rpc ArticleAdd (AddRequest) returns (AddResponse) {}
+}
+
+//AddRequest协议内容
+message AddResponse {
+  string data = 1;
+}
+
+//AddRequest协议内容
+message AddRequest {
+  string name = 1;
+  string content = 2;
+}

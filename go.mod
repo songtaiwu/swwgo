@@ -27,6 +27,8 @@ require (
 	github.com/xormplus/builder v0.0.0-20200331055651-240ff40009be // indirect
 	github.com/xormplus/xorm v0.0.0-20210822100304-4e1d4fcc1e67 // indirect
 	go.uber.org/zap v1.23.0 // indirect
+	google.golang.org/grpc v1.40.0
+	google.golang.org/protobuf v1.28.0
 	gopkg.in/flosch/pongo2.v3 v3.0.0-20141028000813-5e81b817a0c4 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 )
