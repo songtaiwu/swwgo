@@ -42,6 +42,7 @@ github.com/gin-gonic/gin/render
 ## explicit
 github.com/go-kit/kit/endpoint
 github.com/go-kit/kit/transport
+github.com/go-kit/kit/transport/grpc
 github.com/go-kit/kit/transport/http
 # github.com/go-kit/log v0.2.0
 github.com/go-kit/log

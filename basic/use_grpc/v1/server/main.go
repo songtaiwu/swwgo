@@ -17,8 +17,6 @@ func main() {
 	grpcServer := grpc.NewServer()
 	proto.RegisterArticleServer(grpcServer, new(ArticleServer))
 	grpcServer.Serve(lis)
-
-	println(123)
 }
 
 type ArticleServer struct {

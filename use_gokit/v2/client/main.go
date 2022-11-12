@@ -5,7 +5,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"
 	"log"
-	"swwgo/basic/use_grpc/v1/proto"
+	"swwgo/use_gokit/v2/proto"
 	"time"
 )
 
