@@ -25,6 +25,8 @@ func main() {
 		spanCtx := spanC.(context.Context)
 		subSpan, _ := opentracing.StartSpanFromContext(spanCtx, "asdsad")
 		defer subSpan.Finish()
+		subSpan.SetBaggageItem("good_key1", "good_value1")
+		subSpan.SetBaggageItem("good_key2", "good_value2")
 
 		// 构建GET请求
 		client := &http.Client{}

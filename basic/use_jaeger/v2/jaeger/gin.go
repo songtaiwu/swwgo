@@ -14,19 +14,18 @@ var (
 
 func Middleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		traceId := c.GetHeader("uber-trace-id")
+		tracer := opentracing.GlobalTracer()
 		var span opentracing.Span
-		if traceId != "" {
-			var err error
-			span, err = GetParentSpan(c.FullPath(), traceId, c.Request.Header)
-			if err != nil {
-				return
-			}
+
+		// 从header中获取jaeger信息
+		wireContext, err := tracer.Extract(opentracing.HTTPHeaders, opentracing.HTTPHeadersCarrier(c.Request.Header))
+		// 如果失败，构建新的span
+		if err != nil {
+			span = opentracing.StartSpan(c.FullPath())
 		} else {
-			span = StartSpan(opentracing.GlobalTracer(), c.FullPath())
-			// 透传traceId
-			opentracing.GlobalTracer().Inject(span.Context(), opentracing.HTTPHeaders, opentracing.HTTPHeadersCarrier(c.Request.Header))
+			span = opentracing.StartSpan(c.FullPath(), ext.RPCServerOption(wireContext))
 		}
+
 		defer span.Finish()
 
 		c.Set(SpanCTX, opentracing.ContextWithSpan(c, span))
